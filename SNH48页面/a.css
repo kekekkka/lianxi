@@ -2,6 +2,29 @@ body{
     margin: 0;
     background-color: #efefef;
 }
+body>main{
+    margin-top: -320px;
+    
+}
+body>main .button{
+    font-size: 14px;
+    line-height: 16px;
+    padding: 21px 55px;
+    display: inline-block;
+    border: #b7b7b7 2px solid;
+    background: #efefef;
+    border-radius: 5%;
+    color: #3d4451;
+    font-weight: bold;/*加粗 */
+    margin: 32px 0;
+    transition: box-shadow 0.5s;/*过度效果0.5s*/
+
+}
+body>main .baoguo{
+    text-align: center;/*居中*/
+}
+body>main .baoguo :hover{
+box-shadow: 0px 8px 27px 7px rgba(0,0,0,0.1);}
 *{
     margin: 0;padding: 0;}
 a{
@@ -50,7 +73,7 @@ a{
     background-color:#63caf3;
     background-size :contain;
     color: aliceblue;
-   
+ 
 }
 .topnavbar{
     padding:14px 0 16px 0;
@@ -73,10 +96,11 @@ a{
     background-color: rgba(0, 0,0, 0.5);
 }
 .card{
-    max-width:  960px ;
     background-color:white;
+    max-width:  960px ;
     margin-left: auto;
     margin-right: auto;
+    box-shadow: 0px 1px 5px 7px rgba(0,0,0,0.1);
 }
 .tupian>img{
     width: 299px;
@@ -111,6 +135,7 @@ a{
     float: left;
     margin-left: 64px;
     width: 470px;
+    
 }
 .card .text hr{
     margin: 20px 0;
@@ -159,4 +184,67 @@ hr{
 }
 .media>a:hover{
     background: #cf5d5f;
+}
+.ziwojieshao{
+    max-width:  960px ;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family:fantasy ;/*字体*/
+    line-height: 1.8;
+    font-size: 18px;
+
+}
+section.age,section.portfolio{
+    max-width:  960px ;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 70px;
+}
+section.age>h2,section.portfolio>h2{
+    text-align: center;
+    color: #3d4451;
+    font-size: 34px;
+    line-height: 1.2;
+    font-weight: 600;
+}
+h1,h2,h3,h4{
+    font-weight: normal;/*取消加粗*/
+}
+section.age h3{
+    font-size: 14px;
+    line-height: 1.1;
+    padding-right: 48px;
+}
+ol,ul{
+    list-style: none;
+}
+section.age>ul{
+    background: white;
+    box-shadow: 0 1px 5px 0 rgba(0, 0,0, 0.5);
+    padding: 42px 50px 10px;
+    margin-top: 30px;
+}
+section.age>ul>li{
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+    padding-right:10px ;
+}
+.Progressbar{
+    height: 3px;
+   background: #fae1e1;
+   margin: 4px 0 40px;
+   
+   
+}
+section>ul>li:nth-child(even){/*列表偶数向右对齐*/
+    float:right;
+    
+}
+.Progress{
+    height: 3px;
+     background: #e6686a;
+    width: 50%;
+    border-radius: 2px ;
 }
