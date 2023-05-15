@@ -255,6 +255,7 @@ section.portfolio >nav{
     text-align: center;/*居中*/
     display: inline-block;
     vertical-align: top;
+    margin-top: 40px;
 }
 
 section.portfolio >nav>ul{
@@ -264,6 +265,7 @@ section.portfolio >nav>ul{
 section.portfolio >nav>ul>li{
     float: left;
     margin-left: 40px;
+    cursor: pointer;/*鼠标变成手形*/
 }
 section.portfolio >nav>ul>li:nth-child(1){
     margin-left: 0;
@@ -276,9 +278,30 @@ section.portfolio >nav>ul>li:nth-child(1){
     margin-bottom: 50px;
     border-radius: 3px;
 }
-.portfolio >nav .barinner{
-height: 100%;
-background: #e6686a;
-border-radius: 3px;
-
+.portfolio >nav  .barinner{
+    height: 100%;
+    background: #e6686a;
+    border-radius: 3px;
+    transition: all 0.3s;/*动画过渡*/
+}
+.portfolio >nav .bar.state-1  .barinner{
+    margin-left: 0;
+    width: 50px;
+}
+.portfolio >nav .bar.state-2  .barinner{
+    margin-left: 65px;
+    width: 50px;
+}
+.portfolio >nav .bar.state-3 .barinner{
+    margin-left: 150px;
+    width: 50px;
+}
+.portfolio .jobs{
+    position: relative;
+}
+.portfolio .jobs .big,
+.portfolio .jobs .small{
+    position: absolute;
+    
+    
 }

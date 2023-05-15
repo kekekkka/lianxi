@@ -141,18 +141,35 @@
         <h2 >作品合集</h2>
         <nav>
             <ul class="clearfix">
-                <li>全部</li>
-                <li>王奕</li>
-                <li>周诗雨</li>
+                <li id="portfolioall">全部</li>
+                <li id="portfoliowangyi">王奕</li>
+                <li id="portfoliozoushiyv">周诗雨</li>
             </ul>
-            <div class="bar">
-                <div class="barinnner"></div>
+            <div id="portfoliobar" class="bar state-1">
+                <div class="barinner"></div>
             </div>
         </nav>
-        <div class="jobs">
-            <div class="big"></div>
-            <div class="small"></div>
-            <div class="small"></div>
+        <script>
+            portfolioall.onclick= function(){
+                portfoliobar.className='bar state-1'
+            }/*第一个被点击，下面的状态栏跳转*/
+            portfoliowangyi.onclick= function(){
+                portfoliobar.className='bar state-2'
+            }
+            portfoliozoushiyv.onclick= function(){
+                portfoliobar.className='bar state-3'
+            }
+        </script>
+        <div class="jobs" style="height: 597px;">
+            <div class="big" style="top: 0;left: 0;">
+                <img src="./img/w1.jpeg" alt="作品1" width="600px" height="600px">
+            </div>
+            <div class="small" style="top: 0;left: 645px;">
+                <img src="./img/w2.jpeg" alt="作品2" width="281px" height="281px">
+            </div>
+            <div class="small" style="top: 321px;left: 645px;">
+                <img src="./img/z1.jpeg" alt="作品3"width="281px" height="281px">
+            </div>
         </div>
     </section>
 </body>
