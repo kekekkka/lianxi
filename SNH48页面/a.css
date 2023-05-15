@@ -248,3 +248,37 @@ section>ul>li:nth-child(even){/*列表偶数向右对齐*/
     width: 50%;
     border-radius: 2px ;
 }
+section.portfolio{
+    text-align: center;
+}
+section.portfolio >nav{
+    text-align: center;/*居中*/
+    display: inline-block;
+    vertical-align: top;
+}
+
+section.portfolio >nav>ul{
+    display: inline-block;/*收缩*/
+    vertical-align: top;/*要加这一行*/
+}
+section.portfolio >nav>ul>li{
+    float: left;
+    margin-left: 40px;
+}
+section.portfolio >nav>ul>li:nth-child(1){
+    margin-left: 0;
+}
+.portfolio >nav .bar{
+    border: 1px solid red;
+    height: 5px;
+    background: white;
+    margin-top: 5px;
+    margin-bottom: 50px;
+    border-radius: 3px;
+}
+.portfolio >nav .barinner{
+height: 100%;
+background: #e6686a;
+border-radius: 3px;
+
+}
