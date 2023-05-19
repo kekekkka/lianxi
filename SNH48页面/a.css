@@ -235,8 +235,6 @@ section.age>ul>li{
     height: 3px;
    background: #fae1e1;
    margin: 4px 0 40px;
-   
-   
 }
 section>ul>li:nth-child(even){/*列表偶数向右对齐*/
     float:right;
@@ -247,11 +245,13 @@ section>ul>li:nth-child(even){/*列表偶数向右对齐*/
      background: #e6686a;
     width: 50%;
     border-radius: 2px ;
+    margin-bottom: 20px;
 }
 section.portfolio{
     text-align: center;
 }
 section.portfolio >nav{
+  
     text-align: center;/*居中*/
     display: inline-block;
     vertical-align: top;
@@ -271,11 +271,10 @@ section.portfolio >nav>ul>li:nth-child(1){
     margin-left: 0;
 }
 .portfolio >nav .bar{
-    border: 1px solid red;
     height: 5px;
     background: white;
     margin-top: 5px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     border-radius: 3px;
 }
 .portfolio >nav  .barinner{

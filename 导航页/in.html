@@ -5,10 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="sty.css">
 </head>
 <body>
     <header></header>
-    <main id="jian"></main>
+    <main >
+        <div class="wrapper" id="jian"></div>
+    </main>
     <footer></footer>
     <script>
         var keys = {
@@ -21,14 +24,43 @@
             q:'qq.com',
             w:'weibo.com'
         }
+        var hashInLocalStorage=JSON.parse(localStorage.getItem('uuu')||'')
+        //取出localStorage中uuu对应的hash
+        if(hashInLocalStorage){
+            hash=hashInLocalStorage
+        }
         index = 0
-        while(index< keys['lenght']){
-            div1 = document.createElement('div')
-            jian.appendChild(div1)
-            z = document.createElement('kbd')
-            z.textContent ='hi'/*z里面的文字内容*/
-            div1.appendChild(z)
+        while(index< keys['length']){
+            div1 = document.createElement('div')//创建一个标签
+            jian.appendChild(div1)//前面是爸爸后面是儿子，同时出现在里面
+            row=keys[index]
+            index2=0
+            while(index2<row['length']){
+            kbdxxx = document.createElement('kbd')
+            kbdxxx.textContent =row[index2]/*kbdxxx里面的文字内容*/
+            buttonx=document.createElement('button')
+            buttonx.textContent='编辑'
+            buttonx.onclick=function(shuru){//button被点击的情况下执行shuru
+                key=shuru['target']['id']//被用户点击的那个按钮
+                x=prompt('给我一个网址')
+                hash[key]=x//hash变更//前三行，知道用户输入的哪个key，让用户输入一个x，hash里面的x对应
+                localStorage.setItem('uuu',JSON.stringify/*把hash变成字符串*/( hash))
+                console.log(hash)
+            }
+            kbdxxx.appendChild(buttonx)
+            div1.appendChild(kbdxxx)
+            index2=index2+1
+            }
+            
         index = index+1
+        }
+        document.onkeypress=function(/*随便起的名字*/shuru){//监听结构
+           // console.log('我看到你输入字啦啦啦')
+            key=shuru['key']//监听到输入的什么字母
+            website=hash[key]
+            //console.log(website)
+            //location.href='http://'+website//当前地址栏的地址是website
+            window.open('http://'+website,'_blank')//在新页面打开窗口
         }
     </script>
 </body>
