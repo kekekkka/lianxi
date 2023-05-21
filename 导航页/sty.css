@@ -16,13 +16,59 @@ kbd:hover>button{
 }
 main{
     text-align: center;
+    height:  100vh;/*和屏幕自适应*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper{
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
 }
 #jian{
     display:  inline-block;
 }
 #jian >div:nth-child(2){
-    margin-left: 2em;/*把第二行向右移一个字母*/
+    margin-left: -20px;/*把第二行向右移一个字母*/
 }
 #jian >div:nth-child(3){
-    margin-left: 4em;
+    margin-left: -80px;
+}
+.key{
+    width: 50px;
+    height: 40px;
+    background:linear-gradient(to bottom,#292929 0%,#111111 100%);
+    border: 1px solid #373737;
+    color: #c5c5c5;
+    border-radius: 7px;
+    box-shadow: 0 0 0 1px #1a1b1c,0 0 0 2px #1f2020,0 3 0 2px #080808;
+    /*display: inline-flex;
+    align-items: center;
+    justify-content: center;*/
+    font-size: 16px;
+    font-family: Helvetica;
+    position: relative;
+}
+.row{
+    margin: 20px;
+}
+.row .key{
+    margin: 0 10px;
+}
+
+body{
+    background: grey url(./z.jpg) no-repeat center center;
+    background-size: cover;/*壁纸自适应*/
+}
+.key img{
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    left: 4px;
+    bottom: 2px;
+}
+.key .text{
+    position: absolute;
+    left: 4px;
+    top: 2px;
 }

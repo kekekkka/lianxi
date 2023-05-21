@@ -5,51 +5,80 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="sty.css">
+    <link rel="stylesheet" href="./sty.css">
 </head>
 <body>
     <header></header>
     <main >
         <div class="wrapper" id="jian"></div>
+        
     </main>
     <footer></footer>
     <script>
-        var keys = {
+      keys = {
             0:['q','w','e','r','t','y','u','i','o','p'],
             1:['a','s','d','f','g','h','j','k','l'],
             2:['z','x','c','v','b','n','m'],
             length:3
         }
-        var hash = {
+       var hash = {
             q:'qq.com',
-            w:'weibo.com'
+            w:'weibo.com',
+            e:'ele.me'
         }
-        var hashInLocalStorage=JSON.parse(localStorage.getItem('uuu')||'')
+        var hashInLocalStorage=JSON.parse(localStorage.getItem('uuu') || 'null')
         //取出localStorage中uuu对应的hash
         if(hashInLocalStorage){
             hash=hashInLocalStorage
         }
+        //遍历keys，生成kbd标签
         index = 0
         while(index< keys['length']){
             div1 = document.createElement('div')//创建一个标签
+            div1.className='row'
             jian.appendChild(div1)//前面是爸爸后面是儿子，同时出现在里面
             row=keys[index]
             index2=0
             while(index2<row['length']){
             kbdxxx = document.createElement('kbd')
+            span=document.createElement('span')
+            span.textContent=row[index2]
+            span.className="text "
+            kbdxxx.appendChild(span)
             kbdxxx.textContent =row[index2]/*kbdxxx里面的文字内容*/
+            kbdxxx.className='key'
             buttonx=document.createElement('button')
             buttonx.textContent='编辑'
+            buttonx.id=row[index2]
+            img=document.createElement('img')
+            //如果有图标就用，没有就替换为我的
+            if(hash[row[index2]]){
+                img.src='http://'+hash[row[index2]]+'/favicon.ico'
+            }else{
+                img.src='//i.loli.net/2017/11/10/5a05afbc5e183.png'
+            }
+            img.onerror=function(xxx){
+                xxx.target.src='//i.loli.net/2017/11/10/5a05afbc5e183.png'
+            }
             buttonx.onclick=function(shuru){//button被点击的情况下执行shuru
-                key=shuru['target']['id']//被用户点击的那个按钮
+                button2=shuru['target']
+                img2=button2.previousSibling
+                key=button2['id']
+                //key=shuru['target']['id']//被用户点击的那个按钮
                 x=prompt('给我一个网址')
                 hash[key]=x//hash变更//前三行，知道用户输入的哪个key，让用户输入一个x，hash里面的x对应
-                localStorage.setItem('uuu',JSON.stringify/*把hash变成字符串*/( hash))
-                console.log(hash)
+                img2.src= 'http://'+x+'/favicon.ico'
+                img2.onerror=function(xxx){
+                xxx.target.src='//i.loli.net/2017/11/10/5a05afbc5e183.png'
             }
+                localStorage.setItem('uuu',JSON.stringify(hash)/*把hash变成字符串*/)
+                
+            }
+            kbdxxx.appendChild(img)
             kbdxxx.appendChild(buttonx)
             div1.appendChild(kbdxxx)
             index2=index2+1
+            
             }
             
         index = index+1
