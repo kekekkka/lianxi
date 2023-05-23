@@ -5,3 +5,8 @@
 body{
     margin: 0;
 }
+button{
+    position: fixed;
+    top: 0;
+    left: 0;
+}

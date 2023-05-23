@@ -1,27 +1,62 @@
 var yyy = document.getElementById('xxx');//访问
+
+
+xxx()
+//用户改变画布大小自动刷新
+window.onresize = function () {
+    xxx()
+}
+//将画布大小设置为浏览器大小
+function xxx(){
+    var pageWidth = document.documentElement.clientWidth
+    var pageHeight = document.documentElement.clientHeight
+    yyy.width = pageWidth
+    yyy.heigth = pageHeight
+}
+/////////////////////////////
 var context = yyy.getContext('2d');
-var painting = false
+
+var using = false//是否再用橡皮擦
 var lastPoint = { x: undefined, y: undefined }
+
 yyy.onmousedown = function (aaa) {
-    painting = true
     var x = aaa.clientX
     var y = aaa.clientY
+   if (eraserEnabled){
+    using=true
+    context.clearRect(x-5,y-5,10,10)
+   }else{
+    using = true
+    
     lastPoint = { x: x, y: y }
-    console.log(lastPoint)
-    drawCircle(x, y, 1)
+   }
 }
+
+
 yyy.onmousemove = function (aaa) {
-    if (painting) {
-        var x = aaa.clientX
-        var y = aaa.clientY
-        var newPoint = { "x": x, "y": y }
-        drawCircle(x, y, 1)
-        drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)
-        lastPoint = newPoint
+    var x = aaa.clientX
+    var y = aaa.clientY
+
+    if (eraserEnabled){
+        if(using){
+            context.clearRect(x-5,y-5,10,10)
+        }
+        
+    }else{
+        if (using) {
+           
+            var newPoint = { "x": x, "y": y }
+           
+            drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)
+            lastPoint = newPoint
+        }
     }
+    
 }
+
+
 yyy.onmouseup = function (aaa) {
-    painting = false
+    using = false
 }
 function drawCircle(x, y, radious) {
     context.beginPath()
@@ -37,4 +72,9 @@ function drawLine(x1, y1, x2, y2) {
     context.lineTo(x2, y2)
     context.stroke()
     context.closePath()
+}
+//************橡皮擦 */
+var eraserEnabled=false
+eraser.onclick=function(){
+    eraserEnabled=!eraserEnabled
 }
