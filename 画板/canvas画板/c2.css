@@ -5,8 +5,18 @@
 body{
     margin: 0;
 }
-button{
+.actions{
     position: fixed;
     top: 0;
     left: 0;
+}
+/*默认情况下隐藏*/
+.actions> #brush{
+    display: none;
+}
+.actions.x> #brush{
+    display: inline-block;
+}
+.actions.x> #eraser{
+    display: none;
 }
