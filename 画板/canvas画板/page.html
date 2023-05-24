@@ -1,19 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="c2.css">
-</head>
-<body>
-    <canvas id="xxx" ></canvas>
-    <div class="actions" id="actions">
-        <button id="brush">画笔</button>
-        <button id="eraser">橡皮</button>
-    </div>
     
+ 
+</head>
+
+<body>
+    
+    <canvas id="xxx"></canvas>
+    <div class="actions" id="actions">
+        <svg  id=pen class="active icon">
+            <use xlink:href="#icon-pencil"></use>
+        </svg>
+        <svg id="eraser" class="icon" >
+            <use xlink:href="#icon-xiangpi"></use>
+        </svg>
+        
+    </div>
+   <ol class="colors">
+    <li id="red" class="red active"></li>
+    <li id="green" class="green"></li>
+    <li id="blue" class="blue"></li>
+   </ol>
     <script src="j2.js"></script>
+    <script src="https://at.alicdn.com/t/c/font_4082832_umqq7tm4pig.js"></script>
+   
 </body>
+
 </html>
