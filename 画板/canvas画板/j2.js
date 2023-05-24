@@ -1,5 +1,7 @@
+
 var yyy = document.getElementById('xxx');//访问
 var context = yyy.getContext('2d');
+var lineWidth=5
 
 autoSetCanvasSize(yyy)
 
@@ -25,6 +27,19 @@ eraser.onclick=function(){
     eraser.classList.add('active')
     pen.classList.remove('active')
 }
+clear.onclick=function(){
+    context.clearRect(0,0,yyy.width,yyy.height)
+}
+download.onclick=function(){
+   var url= yyy.toDataURL("image/png")
+   console.log(url)
+   var a=document.createElement('a')
+   document.body.appendChild(a)
+   a.href=url
+   a.download='我的画'
+   a.click()
+}
+
 red.onclick=function(){
     context.fillStyle='red'
     context.strokeStyle='red'
@@ -57,6 +72,13 @@ blue.onclick=function(){
 //     actions.className = 'actions'
 // }
 //自动设置
+thin.onclick=function(){
+    lineWidth=5
+}
+thick.onclick=function(){
+    lineWidth=10
+}
+
 function autoSetCanvasSize(canvas) {
     setCanvasSize()
     //用户改变画布大小自动刷新
@@ -81,7 +103,7 @@ function drawLine(x1, y1, x2, y2) {
     context.beginPath()
    
     context.moveTo(x1, y1)
-    context.lineWidth = 5
+    context.lineWidth = lineWidth
     context.lineTo(x2, y2)
     context.stroke()
     context.closePath()

@@ -13,9 +13,13 @@
 #xxx{
   
     display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 body{
     margin: 0;
+    overflow: hidden;/*手机上不要动*/
 }
 .actions{
     position: fixed;
@@ -57,8 +61,24 @@ body{
 .colors> li.active{
     transform: scale(1.2);/*放大到原来的1.2*/
 }
-
-
+.sizes {
+position: fixed;
+right: 20px;
+top: 10px;
+}
+.sizes>li{
+    margin: 20px 0;
+}
+.sizes> .thin{
+    height: 0;
+    width: 20px;
+    border-top:4px solid black ;
+}
+.sizes> .thick{
+    height: 0;
+    width: 20px;
+    border-top:8px solid black ;
+}
 
 
 
