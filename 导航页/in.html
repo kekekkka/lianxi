@@ -55,10 +55,11 @@
             if(hash[row[index2]]){
                 img.src='http://'+hash[row[index2]]+'/favicon.ico'
             }else{
-                img.src='//i.loli.net/2017/11/10/5a05afbc5e183.png'
+                img.src='5a05afbc5e183.png'
             }
             img.onerror=function(xxx){
-                xxx.target.src='//i.loli.net/2017/11/10/5a05afbc5e183.png'
+                xxx.target.src='5a05afbc5e183.png'
+            
             }
             buttonx.onclick=function(shuru){//button被点击的情况下执行shuru
                 button2=shuru['target']
@@ -69,7 +70,7 @@
                 hash[key]=x//hash变更//前三行，知道用户输入的哪个key，让用户输入一个x，hash里面的x对应
                 img2.src= 'http://'+x+'/favicon.ico'
                 img2.onerror=function(xxx){
-                xxx.target.src='//i.loli.net/2017/11/10/5a05afbc5e183.png'
+                xxx.target.src='5a05afbc5e183.png'
             }
                 localStorage.setItem('uuu',JSON.stringify(hash)/*把hash变成字符串*/)
                 

@@ -21,6 +21,7 @@ pen.onclick=function(){
     eraserEnabled=false
     pen.classList.add('active')
     eraser.classList.remove('active')
+    
 }
 eraser.onclick=function(){
     eraserEnabled=true
