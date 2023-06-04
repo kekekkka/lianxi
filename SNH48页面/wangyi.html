@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="a.css">
+<link rel="stylesheet" href="loading.css">
+<link rel="stylesheet" href="main.css">
+
 
 <head>
     <title>王奕耶</title>
 
     <script src="https://at.alicdn.com/t/c/font_4029905_dcqw4hymkr6.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tweenjs/1.0.2/tweenjs.min.js"></script>
     <style type="text/css">
         .icon {
             width: 1em;
@@ -15,21 +18,29 @@
             overflow: hidden;
         }
     </style>
-
 </head>
 
 <body>
-    <div class="topnavbar ">
+    <div id="sitewelcome" class="sitewelcome active">
+        <div class="loading"></div>
+    </div>
+    <div id="topnavbar" class="topnavbar ">
         <div class="topnavbar- clearfix">
             <a class="logo" href="#" alt="SNH48">
                 <span class="SNH48">SNH48</span>
             </a>
-            <nav>
+            <nav class="menu">
                 <ul class="clearfix">
-                    <li><a href="#">王奕</a></li>
-                    <li><a href="#">搭档</a></li>
-                    <li><a href="#">作品合集</a></li>
-
+                    <li><a href="#siteabout">王奕</a></li>
+                    <li><a href="#siteskills">搭档</a></li>
+                    <li>
+                        <a href="#siteworks">作品合集</a>
+                        <ul class="submenu">
+                            <li>作品1</li>
+                            <li>作品2</li>
+                            <li>作品3</li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -39,7 +50,7 @@
         <div class="mask"></div>
     </div>
     <main>
-        <div class="card">
+        <div class="card" id="siteabout">
             <div class="tupianwenzi clearfix">
                 <div class="tupian">
                     <img src="./img/touxiang.jpeg" alt="头像">
@@ -90,7 +101,7 @@
         </p>
         <p class="ziwojieshao">个人简介：王奕，2001年6月6日出生于江苏省苏州市，中国女子偶像团体SNH48八期生，SNH48TeamHII成员。</p>
     </main>
-    <section class="age">
+    <section id="siteskills" class="age">
         <h2>搭档</h2>
         <ul class="clearfix">
             <li>
@@ -143,7 +154,7 @@
             </li>
         </ul>
     </section>
-    <section class="portfolio">
+    <section class="portfolio" id="siteworks">
         <h2>作品合集</h2>
         <nav>
             <ul class="clearfix">
@@ -178,6 +189,67 @@
             </div>
         </div>
     </section>
+   
+        
+    <script>
+        setTimeout(function () {
+            sitewelcome.classList.remove('active')
+        }, 1000)//添加延迟
+        window.onscroll = function (xxxxx) {
+            if (window.scrollY > 0) {
+                topnavbar.classList.add('sticky')
+            } else {
+                topnavbar.classList.remove('sticky')
+            }
+        }
+        let litages = document.querySelectorAll('nav.menu>ul>li')
+        for (let i = 0; i < litages.length; i++) {
+            litages[i].onmouseenter = function (x) {
+                x.currentTarget.classList.add('active')
+            }
+            litages[i].onmouseleave = function (x) {
+                litages[i].onmouseleave = function (x) {
+                    x.currentTarget.classList.remove('active')
+                }
+            }
+        }
+        let atags = document.querySelectorAll('nav.menu>ul>li>a')//获取a标签位置
+        //滑动时的动画
+        function animate(time) {
+            requestAnimationFrame(animate);
+            TWEEN.update(time);
+        }
+        requestAnimationFrame(animate);
+
+        for (let i = 0; i < atags.length; i++) {
+            atags[i].onclick = function (x) {
+                x.preventDefault()//删除a标签默认跳转属性
+                let a = x.currentTarget //获取a标签
+                let href = a.getAttribute('href')//获取用户写的href
+                let element = document.querySelector(href)
+
+
+                let top = element.offsetTop
+                console.log(top)
+                let currentTop = window.scrollY//当前的高度
+                let targetTop = top - 80//目标高度
+                let s = targetTop - currentTop//每次动的距离
+                console.log(s)
+                console.log(currentTop)
+                console.log(targetTop)
+                var coords = { y: currentTop };//起始位置
+                // var t = math.abs((s/ 100) * 300)//abs求绝对值
+                var tween = new TWEEN.Tween(coords)//起始位置
+                    .to({ y: targetTop }, 1000)//结束位置和时间
+                    .easing(TWEEN.Easing.Quadratic.Inout)//缓动类型
+                    .onUpdate(function () {
+                        console.log(coords.y)
+                        window.scrollTo(0, coords.y)//如何更新界面
+                    })
+                    .start();//开始
+            }
+        }
+    </script>
 </body>
 
 </html>

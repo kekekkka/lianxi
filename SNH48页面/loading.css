@@ -1,0 +1,42 @@
+.loading{
+    width: 200px;
+    height: 200px;
+    position: relative;
+}
+.loading::before,.loading::after{
+    content: '';/*要加这个才能用*/
+    position: absolute;
+    width: 0;
+    height: 0;
+    background: gray;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;/*前面上下左右都是0再加上这个就自动居中*/
+    animation: s 1.5s linear/*线性*/ infinite;
+}
+.loading::after{
+    animation-delay:  0.75s;/*延迟*/
+}
+@keyframes s{
+    0%{
+        width: 0;height: 0;opacity: 1;
+    }
+    100%{
+        width: 100px;height: 100px;opacity: 0;
+    }
+}
+.sitewelcome{
+    display: none;/*不展示 */
+    position: fixed;
+    top: 0;left: 0;width: 100%;height: 100%;
+    background: #aaa;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+}
+.sitewelcome.active{
+    display: flex;/*展示*/
+}
