@@ -7,7 +7,7 @@
 <head>
     <title>王奕耶</title>
 
-    <script src="https://at.alicdn.com/t/c/font_4029905_dcqw4hymkr6.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.1.1/Tween.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tweenjs/1.0.2/tweenjs.min.js"></script>
     <style type="text/css">
         .icon {
@@ -50,7 +50,7 @@
         <div class="mask"></div>
     </div>
     <main>
-        <div class="card" id="siteabout">
+        <div data-x class="card" id="siteabout">
             <div class="tupianwenzi clearfix">
                 <div class="tupian">
                     <img src="./img/touxiang.jpeg" alt="头像">
@@ -101,7 +101,7 @@
         </p>
         <p class="ziwojieshao">个人简介：王奕，2001年6月6日出生于江苏省苏州市，中国女子偶像团体SNH48八期生，SNH48TeamHII成员。</p>
     </main>
-    <section id="siteskills" class="age">
+    <section data-x id="siteskills" class="age">
         <h2>搭档</h2>
         <ul class="clearfix">
             <li>
@@ -154,7 +154,7 @@
             </li>
         </ul>
     </section>
-    <section class="portfolio" id="siteworks">
+    <section data-x class="portfolio" id="siteworks">
         <h2>作品合集</h2>
         <nav>
             <ul class="clearfix">
@@ -189,26 +189,55 @@
             </div>
         </div>
     </section>
-   
-        
+
+
     <script>
         setTimeout(function () {
             sitewelcome.classList.remove('active')
         }, 1000)//添加延迟
+        setTimeout(function () {
+            findClosest()
+        }, 1000)
         window.onscroll = function (xxxxx) {
             if (window.scrollY > 0) {
                 topnavbar.classList.add('sticky')
             } else {
                 topnavbar.classList.remove('sticky')
             }
+            findClosest()
         }
-        let litages = document.querySelectorAll('nav.menu>ul>li')
-        for (let i = 0; i < litages.length; i++) {
-            litages[i].onmouseenter = function (x) {
+        // for(let i=0;i<specialTags.length;i++){
+        //     specialTags[i].classList.remove('active') 
+        // }
+        // specialTags[minindex].classList.add('active')
+        //minindex就是离窗口顶部最近的元素
+        function findClosest() {
+            let specialTags = document.querySelectorAll('[data-x]')//返回选择器对应的所有元素
+            let minindex = 0
+
+            for (let i = 1; i < specialTags.length; i++) {
+                if (Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minindex].offsetTop - window.scrollY)) {
+                    minindex = i
+                }
+            } specialTags[minindex].classList.add('offset')
+            let id = specialTags[minindex].id
+            let a = document.querySelector('a[href="#' + id + '"]')
+            let li = a.parentNode
+            let brothersandme = li.parentNode.children
+            for (let i = 0; i < brothersandme.length; i++) {
+                brothersandme[i].classList.remove('heighlight')
+            }
+            li.classList.add('heighlight')
+        }
+
+
+        let litags = document.querySelectorAll('nav.menu>ul>li')
+        for (let i = 0; i < litags.length; i++) {
+            litags[i].onmouseenter = function (x) {
                 x.currentTarget.classList.add('active')
             }
-            litages[i].onmouseleave = function (x) {
-                litages[i].onmouseleave = function (x) {
+            litags[i].onmouseleave = function (x) {
+                litags[i].onmouseleave = function (x) {
                     x.currentTarget.classList.remove('active')
                 }
             }
@@ -227,23 +256,21 @@
                 let a = x.currentTarget //获取a标签
                 let href = a.getAttribute('href')//获取用户写的href
                 let element = document.querySelector(href)
-
-
                 let top = element.offsetTop
-                console.log(top)
+                // console.log(top)
                 let currentTop = window.scrollY//当前的高度
                 let targetTop = top - 80//目标高度
                 let s = targetTop - currentTop//每次动的距离
-                console.log(s)
-                console.log(currentTop)
-                console.log(targetTop)
+                // console.log(s)
+                // console.log(currentTop)
+                // console.log(targetTop)
                 var coords = { y: currentTop };//起始位置
                 // var t = math.abs((s/ 100) * 300)//abs求绝对值
                 var tween = new TWEEN.Tween(coords)//起始位置
                     .to({ y: targetTop }, 1000)//结束位置和时间
-                    .easing(TWEEN.Easing.Quadratic.Inout)//缓动类型
+                    .easing(TWEEN.Easing.Quadratic.InOut)//缓动类型
                     .onUpdate(function () {
-                        console.log(coords.y)
+
                         window.scrollTo(0, coords.y)//如何更新界面
                     })
                     .start();//开始

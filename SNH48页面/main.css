@@ -75,10 +75,14 @@ color: #b7b7b7;
 .topnavbar->a {
     float: left;
 }
+[data-x].active{
+    outline: 1px solid red
+}
 .topnavbar->nav {
     float: right;
 }
-.topnavbar->nav>ul>li.active >a::after {
+.topnavbar->nav>ul>li.active >a::after,
+.topnavbar->nav>ul>li.heighlight >a::after{
     content: '';
     display: block;
     position: absolute;
@@ -89,6 +93,14 @@ color: #b7b7b7;
     height: 3px;
     animation: menuslide 0.5s;
 }
+[data-x].offset{
+    transform: translateY(-50px);
+}
+[data-x]{
+    transform: translateY(0);
+    transition: all 0.5s;
+}
+
 @keyframes menuslide{/*关键帧*/
     0%{
         width: 0;
@@ -257,6 +269,8 @@ section.portfolio {
     margin-right: auto;
     margin-top: 70px;
 }
+
+
 section.age>h2,
 section.portfolio>h2 {
     text-align: center;
@@ -297,7 +311,7 @@ section.age>ul>li {
 .Progressbar {
     height: 3px;
     background: #fae1e1;
-    margin: 4px 0 40px;
+    margin: 4px 0 40px;overflow: hidden;/*遮住*/
 }
 section>ul>li:nth-child(even) {
     /*列表偶数向右对齐*/
@@ -310,8 +324,12 @@ section>ul>li:nth-child(even) {
     width: 50%;
     border-radius: 2px;
     margin-bottom: 20px;
+    transform: translateX(-100%);
+    transition: all 1s;
 }
-
+section.age.offset .Progress{
+    transform: translateX(0);
+}
 section.portfolio {
     text-align: center;
 }
